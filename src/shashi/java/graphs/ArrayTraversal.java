@@ -40,7 +40,7 @@ public class ArrayTraversal {
 
         int dist[] = new int[V];
 
-        // Mark all the vertices as not visited (For first DFS)
+        // Mark all the vertices as not visited
         boolean[] visited = new boolean[V];
         for(int i = 0; i < V; i++) {
             dist[i] = Integer.MAX_VALUE;
@@ -62,7 +62,7 @@ public class ArrayTraversal {
             // picked vertex.
             for (int v = 0; v < V; v++)
 
-                // Update dist[v] only if is not in sptSet, there is an
+                // Update dist[v] only if is not in visited, there is an
                 // edge from u to v, and total weight of path from src to
                 // v through u is smaller than current value of dist[v]
                 if (!visited[v] && adjMatrix[u][v]!=0 &&
@@ -93,6 +93,7 @@ public class ArrayTraversal {
         }
 */
         for(int i=0; i<size-1; i++){
+        	if(i!=0) adjMatrix[i][i-1]=1;
             adjMatrix[i][i+1]=1;
             for(int j=i+2; j<size; j++){
                 if(arr[i]==arr[j])
@@ -100,7 +101,7 @@ public class ArrayTraversal {
             }
         }
 
-        //test
+        //print adjacency matrix
        /* for(int i=0; i<size; i++){
 
             for(int j=0; j<size; j++){
